@@ -3,10 +3,10 @@ import java.util.*;
 public class E88 {
 
     public static void main(String[] args) {
-        int [] n1 = {1,2,3,0,0,0};
-        int [] n2 = {2,5,6};
-        int m = 3;
-        int n = 3;
+        int [] n1 = {0};
+        int [] n2 = {1};
+        int m = 0;
+        int n = 1;
         merge(n1,m,n2,n);
         System.out.println(Arrays.toString(n1));
 
@@ -17,31 +17,26 @@ public class E88 {
     // m = number of element that should be merged
     // n = n2 array length
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int count = nums1.length - 1;   // current location pointer new array to last element 
-        int n1 = nums1.length - m - 1; // 3
-        int n2 = n -1 ; // 2
+        int n1 = m - 1;
+        int n2 = n-1;
+        int i = n + m -1;
 
-        while (count >= 0){
 
-            if (nums1 [n1] > nums2 [n2]){
-                nums1[count] = nums1 [n1];
+        while (n2 >= 0){
+
+            if ( n1 >=0 && nums1[n1] > nums2[n2]){
+                nums1[i] = nums1[n1];
+                i--;
                 n1--;
-                count --;
             }
-            else if (nums2 [n2] > nums1 [n1]) {
-                nums1[count] = nums2 [n2];
+            else {
+                nums1[i] = nums2[n2];
+                i--;
                 n2--;
-                count --;
-
-            }
-            else if ( nums1 [n1] == nums2 [n2]) {
-                nums1[count] = nums2 [n2];
-                n2--;
-                count --;
             }
 
         }
-        
+
         
     }
 
